@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-editor',
@@ -18,6 +18,7 @@ export class ProfileEditor {
       state: [''],
       zip: [''],
     }),
+    aliases: this.formBuilder.array([this.formBuilder.control('')]),
   });
 
   onSubmit() {
@@ -32,5 +33,13 @@ export class ProfileEditor {
         street: '123 Drew Street',
       },
     });
+  }
+
+  get aliases() {
+    return this.profileForm.get('aliases') as FormArray;
+  }
+
+  addAlias() {
+    this.aliases.push(this.formBuilder.control(''));
   }
 }

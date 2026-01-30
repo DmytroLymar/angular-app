@@ -15,6 +15,17 @@
     <label for="zip">Zip Code: </label>
     <input id="zip" type="text" formControlName="zip" />
   </div>
+  <div formArrayName="aliases">
+    <h2>Aliases</h2>
+    <button type="button" (click)="addAlias()">+ Add another alias</button>
+    @for (alias of aliases.controls; track $index; let i = $index) {
+      <div>
+        <!-- The repeated alias template -->
+        <label for="alias-{{ i }}">Alias:</label>
+        <input id="alias-{{ i }}" type="text" [formControlName]="i" />
+      </div>
+    }
+  </div>
   <p>Complete the form to enable button.</p>
   <p>Form Status: {{ profileForm.status }}</p>
   <button type="button" (click)="updateProfile()">Update Profile</button>
