@@ -3,10 +3,11 @@ import { Greeting } from '../components/greeting/greeting';
 import { Counter } from '../components/counter/counter';
 import { FormComponent } from '../components/form-component/form-component';
 import { ProfileEditor } from '../components/profile-editor/profile-editor';
+import { LoginForm } from '../login-form/login-form';
 
 @Component({
   selector: 'app-home',
-  imports: [Greeting, Counter, FormComponent, ProfileEditor],
+  imports: [Greeting, Counter, FormComponent, ProfileEditor, LoginForm],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
