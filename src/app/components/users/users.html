@@ -1,0 +1,17 @@
+<h2>Users</h2>
+
+@if (error) {
+  <p style="color: red">{{ error }}</p>
+}
+
+@if (users$ | async; as users) {
+  <ul>
+    @for (user of users; track user.id) {
+      <li>
+        <strong>{{ user.name }}</strong> — {{ user.email }}
+      </li>
+    }
+  </ul>
+} @else {
+  <p>Loading...</p>
+}
