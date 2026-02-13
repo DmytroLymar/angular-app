@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div style="display: grid; gap: 12px; max-width: 360px">
+    <div>
+      <label for="email">Email</label><br />
+      <input id="email" type="email" formControlName="email" />
+
+      @if (showError(email)) {
+        <div style="margin-top: 6px">
+          @if (email.hasError('required')) {
+            <small>Email is required.</small>
+          }
+          @if (email.hasError('email')) {
+            <small>Email is invalid.</small>
+          }
+        </div>
+      }
+    </div>
+
+    <div>
+      <label for="password">Password</label><br />
+      <input id="password" type="password" formControlName="password" />
+
+      @if (showError(password)) {
+        <div style="margin-top: 6px">
+          @if (password.hasError('required')) {
+            <small>Password is required.</small>
+          }
+          @if (password.hasError('minlength')) {
+            <small>Password must be at least 8 characters.</small>
+          }
+        </div>
+      }
+    </div>
+
+    <button type="submit" [disabled]="form.pending">Login</button>
+
+    <div>
+      <small>Status: {{ form.status }}</small
+      ><br />
+      <small>Value: {{ form.value | json }}</small>
+    </div>
+  </div>
+</form>
